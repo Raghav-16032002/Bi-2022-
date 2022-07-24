@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Problem 8</title>
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 8</h1>
+		</center>
+		<section class="container">
+			<h2>
+				Let "A" be a string. Remove all the whitespaces and find it's length.
+				(Print "***Error***" if **N** = negative value and 0 if **N** = 0).
+			</h2>
+			<h4>Input Description: A string is provide as an input</h4>
+			<h4>
+				Output Description: Remove all the whitespaces and then print the length
+				of the remaining string.
+			</h4>
+			<button class="btn">Get String</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getSum);
+		const span = document.querySelector(".output");
+
+		function getSum() {
+			let string = prompt("Enter String With WhiteSpaces");
+			handleOutputHtml(string, string.split(" ").join(""));
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `String Without WhiteSpaces: ${answer}`;
+			console.log(`String Without WhiteSpaces: ${answer}`);
+		}
+	</script>
+</html>

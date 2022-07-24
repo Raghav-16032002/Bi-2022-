@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Problem 5</title>
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 5</h1>
+		</center>
+		<section class="container">
+			<h2>
+				You are given with a number **A** i.e. the temperature in Celcius. Write
+				a program to convert this into Fahrenheit.
+			</h2>
+			<h3>
+				Note: In case of decimal values, round-off to **two** decimal places..
+			</h3>
+			<h4>
+				Input Description: A number is provided in Celcius as the input of the
+				program.
+			</h4>
+			<h4>
+				Output Description: The output shall be the temperature converted into
+				Fahrenheit corresponding to the input value print up to two decimal
+				places and round off if required.
+			</h4>
+			<button class="btn">Get Fahrenheit</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getFahrenheit);
+		const span = document.querySelector(".output");
+		function getFahrenheit() {
+			const tempInCelsius = parseInt(prompt("Enter temperature in Celcius"));
+			const fahrenheit = (9 * tempInCelsius + 160) / 5;
+			handleOutputHtml(tempInCelsius, fahrenheit.toFixed(2));
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `The Fahrenheit of ${input}°C is ${answer}°F`;
+			console.log(`The Fahrenheit of ${input}°C is ${answer}°F`);
+		}
+	</script>
+</html>

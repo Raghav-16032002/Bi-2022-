@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Problem 11</title>
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 11</h1>
+		</center>
+		<section class="container">
+			<h2>
+				Given an array of N elements.find the number of occurences of each
+				character and print it in the decreasing order of occurences, if 2 or
+				more number occurs the same number of times, print the numbers in
+				decreasing order.<br />Input Size : |N| <= 100000
+			</h2>
+
+			<button class="btn">Get Array</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getArray);
+		const span = document.querySelector(".output");
+
+		function getArray() {
+			const arraySize = parseInt(prompt("Enter Size of Array"));
+			const arrayNumbers = new Array(arraySize);
+			for (i = 0; i < arrayNumbers.length; i++) {
+				arrayNumbers[i] = parseInt(prompt(`Enter number at position ${i}`));
+			}
+			const newArr = sortByFrequency(arrayNumbers);
+			handleOutputHtml("", newArr, arrayNumbers);
+		}
+
+		// This function handle Output
+		function handleOutputHtml(input, answer, previous) {
+			span.innerHTML = `The sorted array by occurences  by each character is ${answer} and previous was ${previous}`;
+			console.log(
+				`The sorted array by occurences  by each character is ${answer} and previous was ${previous}`
+			);
+		}
+
+		// This function handle output for error
+		function handleErrorOutputHtml() {
+			span.innerHTML = `Please Enter Valid Numbers`;
+		}
+
+		// This function is for sorting array by occurences
+
+		function sortByFrequency(array) {
+			let newObj = {};
+			for (let i = 0; i < array.length; i++) {
+				if (newObj[array[i]] === undefined) {
+					newObj[array[i]] = 1;
+				} else {
+					newObj[array[i]] += 1;
+				}
+			}
+			let sortable = [];
+			for (let value in newObj) {
+				sortable.push([value, newObj[value]]);
+			}
+
+			let duplicatesArr = [];
+			let nonDuplicatesArr = [];
+
+			sortable.map((ele) => {
+				const [value, occurrenceNumber] = ele;
+				if (occurrenceNumber === 1) {
+					nonDuplicatesArr.push(parseInt(value));
+				} else {
+					duplicatesArr.push(parseInt(value));
+				}
+			});
+
+			duplicatesArr.sort(function (a, b) {
+				return b - a;
+			});
+
+			nonDuplicatesArr.sort(function (a, b) {
+				return b - a;
+			});
+
+			return [...duplicatesArr, ...nonDuplicatesArr];
+		}
+	</script>
+</html>

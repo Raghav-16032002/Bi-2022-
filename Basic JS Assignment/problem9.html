@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Problem 9</title>
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 9</h1>
+		</center>
+		<section class="container">
+			<h2>
+				You are given the coefficients of a quadratic equation in order A, B &
+				C. Where A is the coefficient of X2, B is the coefficient of X and C is
+				the constant term in the most simplified form. Example: For X2 + 5X + 6
+				= 0, you are given the input as: 1 5 6. Write a program to find all of
+				the roots of the quadratic.
+			</h2>
+			<h3>
+				Note: The output should be up to 2nd decimal place (round off if needed)
+				and in case of a recurring decimal use braces i.e. for eg: 0.33333.....
+				=> 0.33. Note: Use Shri Dharacharya's Method to solve i.e. X = {-b +
+				√(b² - 4ac) } / 2a & {- b-√(b² -4ac)} / 2a
+			</h3>
+			<h4>
+				Input Description: Three numbers corresponding to the coefficients of
+				x(squared), x and constant are given as an input in that particular
+				order
+			</h4>
+			<h4>
+				Output Description: Print the two values of X after rounding off to 2
+				decimal places if required..
+			</h4>
+			<button class="btn">Get Roots</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getRoots);
+		const span = document.querySelector(".output");
+
+		function getRoots() {
+			const a = prompt("Enter value a");
+			const b = prompt("Enter value b");
+			const c = prompt("Enter value c");
+			if (a !== "" && b != "" && c !== "") {
+				var root_part = Math.sqrt(b * b - 4 * a * c);
+				var denom = 2 * a;
+
+				let root1 = (-b + root_part) / denom;
+				let root2 = (-b - root_part) / denom;
+				handleOutputHtml([a, b, c], [root1.toFixed(2), root2.toFixed(2)]);
+			} else {
+				handleErrorOutputHtml();
+			}
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `The roots of ${input[0]},${input[1]} and ${input[2]} is root 1 is ${answer[0]} and root 2 is ${answer[1]}`;
+			// console.log(`String Without WhiteSpaces: ${answer}`);
+		}
+
+		function handleErrorOutputHtml() {
+			span.innerHTML = `Please Enter Valid Numbers`;
+		}
+	</script>
+</html>

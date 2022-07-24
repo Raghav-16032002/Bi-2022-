@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Problem 13</title>
+				<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+    		<center>
+			<h1 class="heading">Problem Set 13</h1>
+		</center>
+		<section class="container">
+			<h2>
+				Ajay is given a series(In example).he gone through the series but unable to understand it properly,he has hired you.Your task is to understand the series and print the series 2,6,12,20,30... .You are given with a number ‘n’. Find the nth number of series
+			</h2>
+				<h4>Input Description: You will be given a number ‘n’</h4>
+			<h4>Output Description: Print the nth number of series</h4>
+					<button class="btn">Get Nth Term</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+  </body>
+		<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getSum);
+		const span = document.querySelector(".output");
+		function getSum() {
+			let number = prompt("Enter number to find nth term");
+			let term;
+			number = parseInt(number);
+			if (isNaN(number) || number < 0 || number === 0) {
+				handleErrorOutputHtml();
+			} else {
+				term = getTerm(number);
+				handleOutputHtml(number, term);
+			}
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `The nth term of ${input} is ${answer}`;
+			console.log(`The nth term of ${input} is ${answer}`);
+		}
+
+		function handleErrorOutputHtml() {
+			span.innerHTML = `Please Enter Valid Number`;
+		}
+
+		function getTerm(a){
+			let b;
+			for(let i=2; i<=a+1; i++){
+   			b = (i * i) - i
+  		}
+			return b;
+		}
+	</script>
+</html>

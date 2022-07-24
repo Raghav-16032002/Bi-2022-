@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Problem 2</title>
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 2</h1>
+		</center>
+		<section class="container">
+			<h2>You are given with a number "N", find its cube.</h2>
+			<h4>Input Description: A positive integer is provided as an input.</h4>
+			<h4>Output Description: Find the cube of the number..</h4>
+			<button class="btn">Get Cube</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getCube);
+		const span = document.querySelector(".output");
+		function getCube() {
+			const n = prompt("Enter number to get cube of the number");
+			let answer = Math.pow(n, 3);
+			handleOutputHtml(n, answer);
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `The Cube of ${input} is ${answer}`;
+			console.log(`The Cube of ${input} is ${answer}`);
+		}
+	</script>
+</html>

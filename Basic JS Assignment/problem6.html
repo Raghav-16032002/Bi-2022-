@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Problem 6</title>
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 6</h1>
+		</center>
+		<section class="container">
+			<h2>
+				Write a code to get an integer N and print the sum of values from 1 to
+				N.
+			</h2>
+			<h4>Input Description: A single line contains an integer N.</h4>
+			<h4>Output Description: Print the sum of values from 1 to N.</h4>
+			<button class="btn">Get Sum</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getSum);
+		const span = document.querySelector(".output");
+		function getSum() {
+			let number = prompt("Enter number to get sum from 1 to your number");
+			number = parseInt(number);
+			let sum = 0;
+			if (isNaN(number)) {
+				handleErrorOutputHtml();
+			} else {
+				for (let i = number; i >= 1; i--) {
+					sum = sum + i;
+				}
+				handleOutputHtml(number, sum);
+			}
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `Sum of values from 1 to ${input} is ${answer}`;
+			console.log(`Sum of values from 1 to ${input} is ${answer}`);
+		}
+
+		function handleErrorOutputHtml() {
+			span.innerHTML = `Please Enter Valid Number`;
+		}
+	</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Problem 1</title>
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 1</h1>
+		</center>
+		<section class="container">
+			<h2>You are provided with a number, "**N**". Find its factorial.</h2>
+			<h4>Input Description: A positive integer is provided as an input.</h4>
+			<h4>Output Description: Print the factorial of the integer .</h4>
+			<button href="#" class="btn">Get Factorial</button>
+			<center>
+				<h2>
+					<span class="output"></span>
+				</h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getFactorial);
+		const span = document.querySelector(".output");
+		function getFactorial() {
+			const n = prompt("Enter number to get factorial");
+			let answer = 1;
+			if (n === 0 || n === 1) {
+				handleOutputHtml(n, answer);
+			} else {
+				for (let i = n; i >= 1; i--) {
+					answer = answer * i;
+				}
+				handleOutputHtml(n, answer);
+			}
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `The Factorial of ${input} is ${answer}`;
+			console.log(`The Factorial of ${input} is ${answer}`);
+		}
+	</script>
+</html>

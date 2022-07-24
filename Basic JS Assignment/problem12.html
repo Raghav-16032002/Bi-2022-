@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 11</h1>
+		</center>
+		<section class="container">
+			<h2>
+				Simi is learning about palindromic numbers. Her teacher gave him the
+				task to count all palindromic numbers present in that range.Simi has
+				told you about this and want your help. You design an algorithm in order
+				to help simi.
+			</h2>
+			<h4>Input Description: You will be given a number ‘n’</h4>
+			<h4>Print the count of all palindromic numbers till ’n’(inclusive)</h4>
+			<button class="btn">Get Palindrome Numbers</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getPalindrome);
+		const span = document.querySelector(".output");
+		function getPalindrome() {
+			let number = prompt("Enter number to get all palindrome numbers");
+
+			if (isNaN(number)) {
+				handleErrorOutputHtml();
+			} else {
+				number = parseInt(number);
+				let reversedNumberArr = [];
+				for (let i = number; i > 0; i--) {
+					const checkNumber = i;
+					const reversedNumber = reverseNumber(checkNumber);
+					if (reversedNumber === checkNumber) {
+						reversedNumberArr.push(checkNumber);
+					}
+				}
+
+				handleOutputHtml(number, reversedNumberArr.length);
+			}
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `The count of Palindrome Numbers is ${answer}`;
+			console.log(`The count of Palindrome Numbers is ${answer}`);
+		}
+
+		function reverseNumber(num) {
+			return (
+				parseFloat(num.toString().split("").reverse().join("")) * Math.sign(num)
+			);
+		}
+
+		function handleErrorOutputHtml() {
+			span.innerHTML = `Please Enter Valid Numbers`;
+		}
+	</script>
+</html>

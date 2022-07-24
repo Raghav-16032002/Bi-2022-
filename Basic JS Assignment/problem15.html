@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Problem 15</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 15</h1>
+		</center>
+		<section class="container">
+			<h2>Evaluate the post expression and print the result.</h2>
+			<h4>Sample Input : 5 3 1 \* + 9 -</h4>
+			<h4>Sample Output : 5</h4>
+			<button href="#" class="btn">Get Value</button>
+			<center>
+				<h2>
+					<span class="output"></span>
+				</h2>
+			</center>
+		</section>
+	</body>
+	<script async defer>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getExpressionValue);
+		const span = document.querySelector(".output");
+
+		function getExpressionValue() {
+			let expression = prompt("Enter Expression");
+
+			expression = expression.split(" ").join("");
+
+			let stack = [];
+			for (let i = expression.length - 1; i >= 0; i--) {
+				if (isOperand(expression[i])) {
+					stack.push(expression[i].charCodeAt() - 48);
+				} else {
+					const num1 = stack[stack.length - 1];
+					stack.pop();
+					const num2 = stack[stack.length - 1];
+					stack.pop();
+					switch (expression[i]) {
+						case "+":
+							stack.push(num1 + num2);
+							break;
+						case "-":
+							stack.push(num1 - num2);
+							break;
+						case "*":
+							stack.push(num1 * num2);
+							break;
+						case "/":
+							stack.push(num1 / num2);
+							break;
+
+						default:
+							console.log("wrong expression");
+					}
+				}
+			}
+			handleOutputHtml(expression, stack[stack.length - 1]);
+		}
+
+		function isOperand(c) {
+			if (c.charCodeAt() >= 48 && c.charCodeAt() <= 57) return true;
+			else return false;
+		}
+
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `The value of expression of ${input} is ${answer}`;
+			console.log(`The value of expression of ${input} is ${answer}`);
+		}
+	</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Problem 4</title>
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 4</h1>
+		</center>
+		<section class="container">
+			<h2>
+				You will be provided with a number. Print the number of days in the
+				month corresponding to that number.
+			</h2>
+			<h3>
+				Note: In case the input is February, print 28 days. If the Input is not
+				in valid range print "Error".
+			</h3>
+			<h4>Input Description: Input n -> month number.</h4>
+			<h4>
+				Output Description: Find the days in the month corresponding to the
+				input number. Print Error if the input is not in a valid range..
+			</h4>
+			<button class="btn">Get Number of days</button>
+			<center>
+				<h2><span class="output"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getDaysinMonth);
+		const span = document.querySelector(".output");
+		const monthNames = [
+			"",
+			"Jan",
+			"Feb",
+			"Mar",
+			"Apr",
+			"May",
+			"Jun",
+			"Jul",
+			"Aug",
+			"Sep",
+			"Oct",
+			"Nov",
+			"Dec",
+		];
+		function getDaysinMonth() {
+			const Month = parseInt(prompt("Enter Month in number to get days"));
+			if (Month > 0 && Month < 13) {
+				const currentYear = new Date().getFullYear();
+				const daysInMonth = getDaysInMonth(currentYear, Month);
+				handleOutputHtml(Month, daysInMonth);
+			} else {
+				handleErrorOutputHtml();
+			}
+		}
+		function handleOutputHtml(input, answer) {
+			span.innerHTML = `The Days in ${monthNames[input]} is ${answer}`;
+			console.log(`The Days in ${monthNames[input]} is ${answer}`);
+		}
+
+		function handleErrorOutputHtml() {
+			span.innerHTML = `Please Enter Valid Month`;
+		}
+
+		function getDaysInMonth(year, month) {
+			return new Date(year, month, 0).getDate();
+		}
+	</script>
+</html>

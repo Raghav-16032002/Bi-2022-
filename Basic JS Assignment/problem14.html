@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Problem 14</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<center>
+			<h1 class="heading">Problem Set 14</h1>
+		</center>
+		<section class="container">
+			<h2>
+				You are given with an array. Your task is to print the left rotated
+				array after k opearations. Time:O(n) Extra Space: O(1)
+			</h2>
+			<h4>
+				Input Description: First line contains two number ‘n’ and ‘k’.Next line
+				contains n space separated numbers.
+			</h4>
+			<h4>Print the array as mentioned.</h4>
+			<h4>Sample Input: 7 3</h4>
+			<h4>Sample Output:1 2 3 4 5 6 7 <br />4 5 6 7 1 2 3</h4>
+			<button class="btn">Get Number Array</button>
+			<center>
+				<h2><span class="output1"></span></h2>
+				<h2><span class="output2"></span></h2>
+			</center>
+		</section>
+	</body>
+	<script>
+		const button = document.querySelector(".btn");
+		button.addEventListener("click", getNumberArr);
+		const span1 = document.querySelector(".output1");
+		const span2 = document.querySelector(".output2");
+		function getNumberArr() {
+			let number1 = prompt("Enter number 1");
+
+			let number2 = prompt("Enter number 2");
+
+			if (isNaN(number1) || isNaN(number2)) {
+				handleErrorOutputHtml("Enter Valid Number");
+			} else if (parseInt(number1) < parseInt(number2)) {
+				handleErrorOutputHtml("Number 2 cannot be greater than number 1");
+			} else {
+				const desiredArray = getDesiredArray(
+					parseInt(number1),
+					parseInt(number2)
+				);
+
+				handleOutputHtml([parseInt(number1), parseInt(number2)], desiredArray);
+			}
+		}
+		function handleOutputHtml(input, answer) {
+			span1.innerHTML = `The linear number array is ${answer[1]}`;
+			span2.innerHTML = `The Array is ${answer[0]} of the inputs ${input[0]} ${input[1]}`;
+			console.log(
+				`The Array is ${answer} of the inputs ${input[0]} ${input[1]}`
+			);
+		}
+
+		function handleErrorOutputHtml(error) {
+			span2.innerHTML = `${error}`;
+		}
+
+		function getDesiredArray(num1, num2) {
+			const normalArray = [];
+			const rotatedArray = [];
+			const otherArray = [];
+			for (let i = 1; i < num1; i++) {
+				normalArray.push(i);
+			}
+			for (let i = num2 + 1; i <= num1; i++) {
+				rotatedArray.push(i);
+			}
+			for (let i = 1; i <= num2; i++) {
+				otherArray.push(i);
+			}
+			return [[...rotatedArray, ...otherArray], normalArray];
+		}
+	</script>
+</html>
