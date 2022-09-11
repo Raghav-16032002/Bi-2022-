@@ -37,7 +37,8 @@
                     <label class="form-label">
                         Select Image:
                     </label>
-                    <input type="file" id="Image" />
+                    <input type="file" onchange="readURL(this);" />
+                    
                 </div>
                 <button onclick="generateCard()">Generate Card</button>
             </form>
@@ -50,8 +51,7 @@
                 <div class="card-container">
                     <div class="card-wrapper">
                         <div class="user-card">
-                            <span></span>
-                            <span id="cardImage"></span>
+                            <span id="cardImage"><img id="blah" src="#" alt="your image" width="350" height="180" /></span>
                         </div>
                         <div class="general-information">
                         <div class="card-element card-name">
