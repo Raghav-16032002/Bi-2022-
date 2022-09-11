@@ -1,115 +1,234 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Problem1</title>
-    </head>
-    <style>
-        .parent1{
-            background-image: url("2.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
-            opacity:0.8;
-            color:whitesmoke;
-            /* text-align: center; */
-            /* height: 360px; */
-            padding: 245px 430px ;
+<head>
+  <title>Calculator</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-family: Gotham Rounded, sans-serif;
+      font-weight: normal;
+    }
 
-        }
-        .button1{
-            background-color: darkslategray;
-            width: 400px;
-            height: 70px;
-            font-size: xx-large;
-            text-align: center;
-            padding: 15px;
-            color: white;
-            display: inline-block;
-            opacity: 0.8;
-        }
-        .p2{
-            color: gray;
-            font-size: larger;
-            text-align: center;
-        }
-        .parent2{
-            background-color: azure;
-            text-align: center;
-        }
-        .pp2{
-            text-align: center;
-            padding: 5px 45px;
-            color: gray;
-        }
-        .parent11{
-            background-image: url("5.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
-            opacity:0.8;
-           
-            color:whitesmoke;
-            /* text-align: center; */
-            /* height: 360px; */
-            padding: 240px 430px ;
-        }
-        .button11{
-            width: 400px;
-            height: 70px;
-            font-size: xx-large;
-            text-align: center;
-            padding: 15px;
-            color:rgb(71, 67, 67);
-            display: inline-block;
-            opacity: 0.8;
-            background-attachment: fixed;
-        }
-        .parent22{
-            background-color: rgb(6, 9, 37);
-            text-align: center;
-        }
-        .p22{
-            color:aliceblue;
-            font-size: larger;
-            text-align: center;
-        }
-        .pp22{
-            text-align: center;
-            padding: 5px 45px;
-            color:aliceblue;
-        }
-        .parent111{
-            background-image: url("6.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
-            opacity:0.8;
-            color:whitesmoke;
-            padding: 260px 430px ;
-        }
-        .button111{
-            width: 400px;
-            height: 70px;
-            font-size: xx-large;
-            text-align: center;
-            padding: 15px;
-            color:black;
-            display: inline-block;
-            opacity: 0.8;
-            background-attachment: fixed;
-        }
-    </style>
-    <body>
-        <div class="parent1">
-            <button class="button1">PARALLEX WEBSITE</button>
-        </div>
-        <div class="parent2"><br><br><b class="p2">Section One</b><br>
-        <div class="pp2"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio nic minima nostrum. Perferenda eos earum praesentium, blinditie sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et dolorem a cupiditate nihil fuga laboriosam fugiat placat dignissimos! Unde eveniet placeat quisquam blanditiis voluptatem doloremque fugiat dolor repellendus ratione in. Distinctio provident dolorem modi cumque illa enim quidem tempora deserunt nostrum voluptate labore repeat quisquam quasi cum suscipit dolore ab consequuntur, ad porro earum temporibus: Laborum ad temporibus ex omnis!</p></div>
-        </div>
-        <div class="parent11">
-            <p class="button11">Image Two Text</p>
-        </div>
-        <div class="parent22"><br><br><b class="p22">Section Two</b><br>
-            <div class="pp22"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio nic minima nostrum. Perferenda eos earum praesentium, blinditie sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et dolorem a cupiditate nihil fuga laboriosam fugiat placat dignissimos! Unde eveniet placeat quisquam blanditiis voluptatem doloremque fugiat dolor repellendus ratione in. Distinctio provident dolorem modi cumque illa enim quidem tempora deserunt nostrum voluptate labore repeat quisquam quasi cum suscipit dolore ab consequuntur, ad porro earum temporibus: Laborum ad temporibus ex omnis!</p></div>
-        </div>
-        <div class="parent111">
-            <p class="button111">Image Three Text</p>
-        </div>
-    </body>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    .calculator-grid {
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      min-height: 100vh;
+      grid-template-columns: repeat(4, 100px);
+      grid-template-rows: minmax(100px, auto) repeat(5, 90px);
+    }
+
+    .calculator-grid > button {
+      cursor: pointer;
+      font-size: 2rem;
+      border: 2px solid rgb(10, 8, 8);
+      outline: none;
+      
+    }
+    .number{
+      background-color: rgba(67, 65, 65, 0.913);
+    }
+    .operator{
+      background-color: rgba(152, 152, 152, 0.75);
+    }
+
+    .calculator-grid > button:hover {
+      background-color: rgba(194, 132, 132, 0.308);
+    }
+
+    .span-two {
+      grid-column: span 2;
+      background-color: rgba(165, 42, 42, 0.874);
+    }
+    .span-two1{
+      grid-column: span 2;
+      background-color: rgba(43, 120, 243, 0.687);
+    }
+    .span-two2{
+      background-color: rgba(165, 42, 42, 0.874);
+    }
+
+    .output {
+      grid-column: 1 / -1;
+      background-color: rgb(0, 0, 0);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      flex-direction: column;
+      padding: 10px;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .output .previous-operand {
+      color: rgba(131, 127, 127, 0.75);
+      font-size: 1.5rem;
+    }
+
+    .output .current-operand {
+      color: white;
+      font-size: 2.5rem;
+    }
+  </style>  
+</head>
+<body>
+  <div class="calculator-grid">
+    <div class="output">
+      <div data-previous-operand class="previous-operand"></div>
+      <div data-current-operand class="current-operand"></div>
+    </div>
+    <button data-all-clear class="span-two">AC</button>
+    <button data-delete class="span-two2">DEL</button>
+    <button data-operation class="operator">÷</button>
+    <button data-number class="number">1</button>
+    <button data-number class="number">2</button>
+    <button data-number class="number">3</button>
+    <button data-operation class="operator">*</button>
+    <button data-number class="number">4</button>
+    <button data-number class="number">5</button>
+    <button data-number class="number">6</button>
+    <button data-operation class="operator">+</button>
+    <button data-number class="number">7</button>
+    <button data-number class="number">8</button>
+    <button data-number class="number">9</button>
+    <button data-operation class="operator">-</button>
+    <button data-number class="number">.</button>
+    <button data-number class="number">0</button>
+    <button data-equals class="span-two1">=</button>
+  </div>
+  
+  <script>
+    class Calculator {
+  constructor(previousOperandTextElement, currentOperandTextElement) {
+    this.previousOperandTextElement = previousOperandTextElement
+    this.currentOperandTextElement = currentOperandTextElement
+    this.clear()
+  }
+
+  clear() {
+    this.currentOperand = ''
+    this.previousOperand = ''
+    this.operation = undefined
+  }
+
+  delete() {
+    this.currentOperand = this.currentOperand.toString().slice(0, -1)
+  }
+
+  appendNumber(number) {
+    if (number === '.' && this.currentOperand.includes('.')) return
+    this.currentOperand = this.currentOperand.toString() + number.toString()
+  }
+
+  chooseOperation(operation) {
+    if (this.currentOperand === '') return
+    if (this.previousOperand !== '') {
+      this.compute()
+    }
+    this.operation = operation
+    this.previousOperand = this.currentOperand
+    this.currentOperand = ''
+  }
+
+  compute() {
+    let computation
+    const prev = parseFloat(this.previousOperand)
+    const current = parseFloat(this.currentOperand)
+    if (isNaN(prev) || isNaN(current)) return
+    switch (this.operation) {
+      case '+':
+        computation = prev + current
+        break
+      case '-':
+        computation = prev - current
+        break
+      case '*':
+        computation = prev * current
+        break
+      case '÷':
+        computation = prev / current
+        break
+      default:
+        return
+    }
+    this.currentOperand = computation
+    this.operation = undefined
+    this.previousOperand = ''
+  }
+
+  getDisplayNumber(number) {
+    const stringNumber = number.toString()
+    const integerDigits = parseFloat(stringNumber.split('.')[0])
+    const decimalDigits = stringNumber.split('.')[1]
+    let integerDisplay
+    if (isNaN(integerDigits)) {
+      integerDisplay = ''
+    } else {
+      integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 })
+    }
+    if (decimalDigits != null) {
+      return `${integerDisplay}.${decimalDigits}`
+    } else {
+      return integerDisplay
+    }
+  }
+
+  updateDisplay() {
+    this.currentOperandTextElement.innerText =
+      this.getDisplayNumber(this.currentOperand)
+    if (this.operation != null) {
+      this.previousOperandTextElement.innerText =
+        `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+    } else {
+      this.previousOperandTextElement.innerText = ''
+    }
+  }
+}
+
+
+const numberButtons = document.querySelectorAll('[data-number]')
+const operationButtons = document.querySelectorAll('[data-operation]')
+const equalsButton = document.querySelector('[data-equals]')
+const deleteButton = document.querySelector('[data-delete]')
+const allClearButton = document.querySelector('[data-all-clear]')
+const previousOperandTextElement = document.querySelector('[data-previous-operand]')
+const currentOperandTextElement = document.querySelector('[data-current-operand]')
+
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+
+numberButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    calculator.appendNumber(button.innerText)
+    calculator.updateDisplay()
+  })
+})
+
+operationButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    calculator.chooseOperation(button.innerText)
+    calculator.updateDisplay()
+  })
+})
+
+equalsButton.addEventListener('click', button => {
+  calculator.compute()
+  calculator.updateDisplay()
+})
+
+allClearButton.addEventListener('click', button => {
+  calculator.clear()
+  calculator.updateDisplay()
+})
+
+deleteButton.addEventListener('click', button => {
+  calculator.delete()
+  calculator.updateDisplay()
+})
+  </script>
+</body>
 </html>
