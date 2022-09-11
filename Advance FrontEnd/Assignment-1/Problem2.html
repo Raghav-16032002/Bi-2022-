@@ -1,8 +1,40 @@
 <html>
     <head>
         <title>Advance FrontEnd Quote Genrater</title>
-    </head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Random Quote Generator</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="Problem2.css">
+        <script src ="Problem2.js" defer></script>
+        </head>
     <body>
-        
+        <div class="container">
+            <div class="quotes-container">
+                <div style="text-align: center;">
+                    <script>  
+                    var welcome;  
+                    var date = new Date();  
+                    var hour = date.getHours();  
+                    if (hour < 12) {  
+                      welcome = "Morning";  
+                    } else if (hour < 20) {  
+                      welcome = "Evening";  
+                    } else {  
+                      welcome = "Night";  
+                    }  
+                    document.write("<h2>" + "<font color='White'>" +"Let's Start Our "+"<font color='red'>" + welcome + "</font>" + " With A New Quote"+ "</font>");   
+                    </script> 
+                </div>
+                <div class="inner-quotes-container" id="generate1">
+                    <p id="quote"></p>
+                    <h3 id="author"></h3>
+                </div>
+                <div class="quote-btn">
+                    <button id="generate">Generate Quote</button>
+                </div>
+            </div>
+        </div> 
     </body>
 </html>
